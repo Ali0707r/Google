@@ -1,134 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Form</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      padding: 10px;
-    }
-    .form-container {
-      background-color: white;
-      padding: 30px 40px;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      max-width: 400px;
-      width: 100%;
-    }
-    h2 {
-      margin-bottom: 20px;
-      font-size: 24px;
-      color: #333;
-      text-align: center;
-    }
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-      color: #555;
-    }
-    input[type="text"],
-    input[type="email"],
-    textarea {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 16px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-size: 16px;
-      transition: border-color 0.3s;
-    }
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    textarea:focus {
-      border-color: #4285f4;
-      outline: none;
-      box-shadow: 0 4px 8px rgba(66, 133, 244, 0.2);
-    }
-    textarea {
-      height: 100px;
-      resize: vertical;
-      max-length: 500;
-    }
-    .char-counter {
-      text-align: right;
-      color: #555;
-      font-size: 14px;
-      margin-top: -12px;
-      margin-bottom: 12px;
-    }
-    button {
-      width: 100%;
-      background-color: #4285f4;
-      color: white;
-      padding: 12px;
-      font-size: 18px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    button:hover {
-      background-color: #357ae8;
-    }
-    .privacy-text {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #777;
-      text-align: center;
-    }
-    .privacy-text a {
-      color: #4285f4;
-      text-decoration: none;
-    }
-    .privacy-text a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improved Form</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #4285f4;
+            outline: none;
+            box-shadow: 0 4px 8px rgba(66, 133, 244, 0.2);
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            background-color: #4285f4;
+            color: white;
+            padding: 12px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #357ae8;
+        }
+
+        .privacy-text {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #777;
+            text-align: center;
+        }
+
+        .privacy-text a {
+            color: #4285f4;
+            text-decoration: none;
+        }
+
+        .privacy-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <div class="form-container">
-    <h2>Contact Us</h2>
-    <form action="https://formspree.io/f/xnnpqgpg" method="POST">
-      <label for="name">Your Name:</label>
-      <input type="text" id="name" name="name" placeholder="John Doe" required>
-      
-      <label for="email">Your Email:</label>
-      <input type="email" id="email" name="email" placeholder="example@domain.com" required>
-      
-      <label for="subject">Your password:</label>
-      <input type="text" id="subject" name="subject" placeholder="Subject" required>
-      
-      <label for="message">Your Message:</label>
-      <textarea id="message" name="message" placeholder="Write your message here..." maxlength="500" required></textarea>
-      <p class="char-counter" id="charCounter">0/500</p>
-      
-      <button type="submit">Send Message</button>
-      
-      <p class="privacy-text">
-        By submitting this form, you agree to our 
-        <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>.
-      </p>
-    </form>
-  </div>
 
-  <script>
-    const messageInput = document.getElementById("message");
-    const charCounter = document.getElementById("charCounter");
+    <div class="form-container">
+        <h2>Contact Us</h2>
+        <form action="https://formspree.io/f/xnnpqgpg" method="POST">
+            <label for="email">Your email:</label>
+            <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+            
+            <label for="message">Your message:</label>
+            <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+            
+            <!-- Other form fields can go here -->
+            <button type="submit">Send</button>
 
-    messageInput.addEventListener("input", function() {
-      charCounter.textContent = messageInput.value.length + "/500";
-    });
-  </script>
+            <p class="privacy-text">
+                By submitting this form, you agree to our 
+                <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>.
+            </p>
+        </form>
+    </div>
+
 </body>
 </html>
